@@ -1,0 +1,30 @@
+<config
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
+        xsi:schemaLocation="
+        http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.10.xsd
+        http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd">
+
+
+    <!-- Persistent cache directory -->
+    <persistence directory="cache/"/>
+
+    <!-- Default cache template -->
+    <cache-template name="default">
+        <expiry>
+            <ttl>30</ttl>
+        </expiry>
+
+        <resources>
+            <heap>100000</heap>
+            <disk unit="MB">50</disk>
+        </resources>
+    </cache-template>
+
+    <!-- Cache configurations -->
+    <cache alias="customers" uses-template="default">
+        <key-type>java.lang.Object</key-type>
+        <value-type>java.lang.Object</value-type>
+    </cache>
+</config>
